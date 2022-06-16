@@ -13,10 +13,12 @@ module.exports = {
           let userToReturn = {...users[i]}
           delete userToReturn.passwordHash
           res.status(200).send(userToReturn)
+        } else {
+          res.status(400).send("User not found.")
+
         }
       }
     }
-    res.status(400).send("User not found.")
   },
     register: (req, res) => {
       const { username, email, firstName, lastName, password} = req.body
